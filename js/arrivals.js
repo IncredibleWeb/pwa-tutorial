@@ -11,7 +11,7 @@
 
         // retrieves all arrivals from the API
         self.getAll = function() {
-            return $.get("./api/").then(function(response) {
+            return $.get("./api/data.json").then(function(response) {
                 return response;
             });
         };
