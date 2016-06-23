@@ -3,7 +3,7 @@
   "name": "Arrivals at Sky High",
   "icons": [
     {
-      "src": "launcher-icon-1x.png",
+      "src": "launcher-icon.png",
       "sizes": "48x48",
       "type": "image/png"
     },
@@ -23,7 +23,7 @@
       "type": "image/png"
     }
   ],
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",
   "theme_color": "#29BDBB",
