@@ -60,23 +60,29 @@
         // initialize the controller
         var arrivalController = new ArrivalController(arrivalApiService, arrivalAdapter);
 
-        // retrieve all routes
-        $(".arrivals-list").addClass("loading");
-        arrivalController.getAll().then(function(response) {
-            // bind the arrivals to the UI
-            $.vm.arrivals(response);
-            $(".arrivals-list").removeClass("loading");
-        });
-        ko.applyBindings($.vm);
-
-        // constantly ping to retrieve the latest routes
-        var interval = setInterval(function() {
+        // check if the user is connected
+        if (navigator.onLine) {
+            // retrieve all routes
             $(".arrivals-list").addClass("loading");
             arrivalController.getAll().then(function(response) {
                 // bind the arrivals to the UI
                 $.vm.arrivals(response);
                 $(".arrivals-list").removeClass("loading");
             });
-        }, 3000);
+            ko.applyBindings($.vm);
+
+            // constantly ping to retrieve the latest routes
+            var interval = setInterval(function() {
+                $(".arrivals-list").addClass("loading");
+                arrivalController.getAll().then(function(response) {
+                    // bind the arrivals to the UI
+                    $.vm.arrivals(response);
+                    $(".arrivals-list").removeClass("loading");
+                });
+            }, 3000);
+        } else {
+            // load html template
+        }
+
     })(jQuery);
 })();
