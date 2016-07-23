@@ -1,4 +1,4 @@
-//  use a cacheName for cache versioning
+// use a cacheName for cache versioning
 var cacheName = 'v1:static';
 
 // during the install phase you usually want to cache static assets
@@ -7,11 +7,12 @@ self.addEventListener('install', function(e) {
     e.waitUntil(
         caches.open(cacheName).then(function(cache) {
             return cache.addAll([
+                './',
                 './css/style.css',
                 './js/build/script.min.js',
                 './js/build/vendor.min.js',
-                './js/vendor/jquery.min.js',
-                'https://fonts.googleapis.com/css?family=Roboto:300,600,300italic,600italic'
+                './css/fonts/roboto.woff',
+                './offline.html'
             ]).then(function() {
                 self.skipWaiting();
             });
@@ -25,7 +26,6 @@ self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request).then(function(response) {
             if (response) {
-                console.log('Retrieved from cache', response.url);
                 // retrieve from cache
                 return response;
             }
