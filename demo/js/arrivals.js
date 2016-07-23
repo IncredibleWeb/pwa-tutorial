@@ -1,4 +1,4 @@
-(function() {
+var Arrivals = (function() {
     function ArrivalViewModel() {
         var self = this;
         self.title = "";
@@ -11,8 +11,27 @@
 
         // retrieves all arrivals from the API
         self.getAll = function() {
-            return $.get("./api/data.json").then(function(response) {
-                return response;
+            return new Promise(function(resolve, reject) {
+                var request = new XMLHttpRequest();
+                request.open('GET', './api/data.json');
+
+                request.onload = function() {
+                    // success
+                    if (request.status === 200) {
+                        // resolve the promise with the parsed response text (assumes JSON)
+                        resolve(JSON.parse(request.response));
+                    } else {
+                        // error retrieving file
+                        reject(Error(request.statusText));
+                    }
+                };
+
+                request.onerror = function() {
+                    // network errors
+                    reject(Error("Network Error"));
+                };
+
+                request.send();
             });
         };
     }
@@ -33,7 +52,7 @@
 
         self.toArrivalViewModels = function(data) {
             if (data && data.length > 0) {
-                return _.map(data, function(item) {
+                return data.map(function(item) {
                     return self.toArrivalViewModel(item);
                 });
             }
@@ -52,28 +71,24 @@
         };
     }
 
-    (function($) {
-        // initialize the services and adapters
-        var arrivalApiService = new ArrivalApiService();
-        var arrivalAdapter = new ArrivalAdapter();
 
-        // initialize the controller
-        var arrivalController = new ArrivalController(arrivalApiService, arrivalAdapter);
+    // initialize the services and adapters
+    var arrivalApiService = new ArrivalApiService();
+    var arrivalAdapter = new ArrivalAdapter();
 
-        // check if the user is connected
-        if (navigator.onLine) {
+    // initialize the controller
+    var arrivalController = new ArrivalController(arrivalApiService, arrivalAdapter);    
+
+    return {
+        loadData: function() {
             // retrieve all routes
-            $(".arrivals-list").addClass("loading");
+            document.querySelector(".arrivals-list").classList.add('loading')
             arrivalController.getAll().then(function(response) {
                 // bind the arrivals to the UI
-                $.vm.arrivals(response);
-                $(".arrivals-list").removeClass("loading");
+                Page.vm.arrivals(response);
+                document.querySelector(".arrivals-list").classList.remove('loading')
             });
-            ko.applyBindings($.vm);
-        } else {
-            // load html template
-            
         }
+    }
 
-    })(jQuery);
 })();

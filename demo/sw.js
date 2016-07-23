@@ -11,8 +11,8 @@ self.addEventListener('install', function(e) {
                 './css/style.css',
                 './js/build/script.min.js',
                 './js/build/vendor.min.js',
-                './js/vendor/jquery.min.js',
-                './css/fonts/roboto.woff'
+                './css/fonts/roboto.woff',
+                './offline.html'
             ]).then(function() {
                 self.skipWaiting();
             });

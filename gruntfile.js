@@ -1,7 +1,5 @@
 var vendorBundle = [
     "<%= paths.vendor %>/knockout-3.3.0.js",
-    "<%= paths.vendor %>/fastclick.js",
-    "<%= paths.vendor %>/lodash.js"
 ];
 
 module.exports = function(grunt) {
