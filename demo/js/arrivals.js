@@ -70,18 +70,9 @@
                 $(".arrivals-list").removeClass("loading");
             });
             ko.applyBindings($.vm);
-
-            // constantly ping to retrieve the latest routes
-            var interval = setInterval(function() {
-                $(".arrivals-list").addClass("loading");
-                arrivalController.getAll().then(function(response) {
-                    // bind the arrivals to the UI
-                    $.vm.arrivals(response);
-                    $(".arrivals-list").removeClass("loading");
-                });
-            }, 3000);
         } else {
             // load html template
+            
         }
 
     })(jQuery);

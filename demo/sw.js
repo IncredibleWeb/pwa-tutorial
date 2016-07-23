@@ -7,11 +7,11 @@ self.addEventListener('install', function(e) {
     e.waitUntil(
         caches.open(cacheName).then(function(cache) {
             return cache.addAll([
+                './',
                 './css/style.css',
                 './js/build/script.min.js',
                 './js/build/vendor.min.js',
-                './js/vendor/jquery.min.js',
-                'https://fonts.googleapis.com/css?family=Roboto:300,600,300italic,600italic'
+                './js/vendor/jquery.min.js'
             ]).then(function() {
                 self.skipWaiting();
             });
