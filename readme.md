@@ -18,15 +18,15 @@ Built using traditional HTML5 and vanilla JavaScript that simulates the retrieva
 ### API
 For the scope of this demo, we will be retrieving a static JSON file instead of a real API. This is only to keep things simple and in the real world you would query an API or use web sockets.
 
-## Installation
-0. Prequisites: `npm` and `grunt` must be installed.
-1. Clone this repo to your local development environment, like **~/Development/pwa-tutorial/**
-1. Change directories to the root of the project: `cd ~/Development/pwa-tutorial/`
-1. Install the app and the dependencies: `npm install`
+## Prerequisites
+- NodeJS and NPM
+- Grunt
+    Run `npm install -g grunt` to install Grunt.
 
-## Start the Server
-1. Run the default grunt script: `grunt`
-1. In your web browser, open: `http://localhost:3000`
+## Installation
+- Run `npm install` to install all required node modules
+- Run `npm start` to start the server, accessible through your browser on `http://localhost:3000`
+- Run `grunt dev_watch` to set up grunt watchers if you will be doing any development changes
 
 ## Demo
 Demo: [https://incredibleweb.github.io/pwa-tutorial/](https://incredibleweb.github.io/pwa-tutorial/)
