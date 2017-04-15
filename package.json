@@ -1,7 +1,11 @@
 {
-  "name": "ProgressiveWebChat",
-  "description": "Progressive Web Chat",
-  "author": "Incredible Web",
+  "name": "PWATutorial",
+  "description": "PWA Tutorial",
+  "author": {
+    "name": "Kevin Farrugia",
+    "email": "kevin.farrugia@incredible-web.com",
+    "url": "https://www.incredible-web.com"
+  },
   "devDependencies": {
     "express": "^4.14.0",
     "grunt": "~0.4.5",
@@ -10,5 +14,8 @@
     "grunt-contrib-uglify": "~0.5.1",
     "grunt-contrib-watch": "~0.6.1",
     "load-grunt-config": "~0.13.1"
+  },
+  "scripts": {
+    "start": "grunt && node app.js"
   }
 }
