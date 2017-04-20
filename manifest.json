@@ -1,4 +1,4 @@
-{
+d{
   "short_name": "Arrivals",
   "name": "Arrivals at Sky High",
   "description": "Progressive Web Application demonstration",
@@ -31,7 +31,7 @@
   ],
   "start_url": "./?utm_source=web_app_manifest",
   "display": "standalone",
-  "orientation": "portrait",
+  "orientation": "landscape",
   "theme_color": "#29BDBB",
   "background_color": "#29BDBB"
 }
